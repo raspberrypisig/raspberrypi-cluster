@@ -39,4 +39,13 @@ EOF
 # token for kubernetes dashboard
 #kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | awk '/^admin-user/{print $1}') | awk '$1=="token:"{print $2}' > token.txt
 
+#Download and run octant
+mkdir octant
+cd octant
+wget https://github.com/raspberrypisig/octant/raw/master/build/octant.xz
+xz -d octant.xz
+chmod 777 octant
+cd ..
+#KUBECONFIG=/etc/rancher/k3s/k3s.yaml OCTANT_DISABLE_OPEN_BROWSER=1 OCTANT_LISTENER_ADDR=0.0.0.0:7777  ./octant/octant
+
 
