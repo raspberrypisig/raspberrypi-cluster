@@ -36,7 +36,7 @@ subjects:
   namespace: kube-system
 EOF
 
-# Get token, need by slave nodes to connect to master node, can be run as non-root
-kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | awk '/^admin-user/{print $1}') | awk '$1=="token:"{print $2}' > token.txt
+# token for kubernetes dashboard
+#kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | awk '/^admin-user/{print $1}') | awk '$1=="token:"{print $2}' > token.txt
 
 
