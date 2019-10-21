@@ -2,6 +2,8 @@
 
 #Run as root
 
+rm /etc/xdg/autostart/pprompt.desktop
+
 apt update
 apt install -y sshpass
 
