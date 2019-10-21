@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -x
 
 # Run as root
 
@@ -10,6 +11,8 @@ apt update
 
 # Install k3s as master node
 curl -sfL https://get.k3s.io | K3S_KUBECONFIG_MODE="644" sh -s -
+
+sleep 400
 
 # create admin-user
 cat<<EOF | kubectl create -f -
@@ -44,7 +47,30 @@ git clone --depth 1 https://github.com/raspberrypisig/octant
 cd octant/build
 xz -d octant.xz
 chmod 777 octant
-cd ..
-#KUBECONFIG=/etc/rancher/k3s/k3s.yaml OCTANT_DISABLE_OPEN_BROWSER=1 OCTANT_LISTENER_ADDR=0.0.0.0:7777  ./octant/octant
+
+# Install Octant service
+
+cat<<EOF > /etc/systemd/system/octant.service
+[Unit]
+Description=octant
+Wants=network.target
+Before=network.target
+
+[Service]
+Type=simple
+Environment=HOME=/root
+Environment=KUBECONFIG=/etc/rancher/k3s/k3s.yaml
+Environment=OCTANT_DISABLE_OPEN_BROWSER=1
+Environment=OCTANT_LISTENER_ADDR=0.0.0.0:7777
+ExecStart=/home/pi/octant/build/octant 
+WorkingDirectory=/home/pi/octant
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+systemctl daemon-reload
+systemctl enable octant
+systemctl start octant
 
 
