@@ -42,7 +42,6 @@ EOF
 #Download and run octant
 git clone --depth 1 https://github.com/raspberrypisig/octant
 cd octant/build
-wget https://github.com/raspberrypisig/octant/raw/master/build/octant.xz
 xz -d octant.xz
 chmod 777 octant
 cd ..
