@@ -5,7 +5,6 @@
 apt update
 apt install -y sshpass
 
-
 MASTER_NODE="k3smaster"
 
 #SSH keyless 
@@ -18,4 +17,4 @@ EOF
 )
 
 curl -sfL https://get.k3s.io | K3S_URL=https://$MASTER_NODE:6443 K3S_TOKEN=$TOKEN bash -
-CHANNEL=nightly curl -sSL get.docker.com | bash -
+#CHANNEL=nightly curl -sSL get.docker.com | bash -
