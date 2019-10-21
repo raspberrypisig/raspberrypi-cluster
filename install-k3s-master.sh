@@ -9,7 +9,7 @@ rm /etc/profile.d/sshpwd.sh
 apt update
 
 # Install k3s as master node
-curl -sfL https://get.k3s.io | K3S_KUBECONFIG_MODE="644" bash -
+curl -sfL https://get.k3s.io | K3S_KUBECONFIG_MODE="644" sh -s -
 
 # create admin-user
 cat<<EOF | kubectl create -f -
