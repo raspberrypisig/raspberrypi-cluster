@@ -19,5 +19,5 @@ sudo cat /var/lib/rancher/k3s/server/node-token
 EOF
 )
 
-curl -sfL https://get.k3s.io | K3S_URL=https://$MASTER_NODE:6443 K3S_TOKEN=$TOKEN bash -
+curl -sfL https://get.k3s.io | K3S_URL=https://$MASTER_NODE:6443 K3S_TOKEN=$TOKEN sh -
 
