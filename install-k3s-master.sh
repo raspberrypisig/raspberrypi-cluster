@@ -40,8 +40,8 @@ EOF
 #kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | awk '/^admin-user/{print $1}') | awk '$1=="token:"{print $2}' > token.txt
 
 #Download and run octant
-mkdir octant
-cd octant
+git clone --depth 1 https://github.com/raspberrypisig/octant
+cd octant/build
 wget https://github.com/raspberrypisig/octant/raw/master/build/octant.xz
 xz -d octant.xz
 chmod 777 octant
