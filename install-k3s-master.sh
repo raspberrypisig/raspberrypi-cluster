@@ -3,6 +3,11 @@ set -x
 
 # Run as root
 
+# Before running this script, do the following
+#
+# - enable SSH, connect to network
+# - rename hostname to k3smaster
+
 # Hack for allowing remote ssh commands to not include banners
 su pi bash -c "touch /home/pi/.hushlogin"
 rm /etc/profile.d/sshpwd.sh
