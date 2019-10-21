@@ -12,7 +12,7 @@ MASTER_NODE="k3smaster.local"
 
 #SSH keyless 
 ssh-keygen -f ~/.ssh/id_rsa -t rsa -N ''
-SSHPASS=raspberry sshpass -e ssh-copy-id pi@$MASTER_NODE
+SSHPASS=raspberry sshpass -e ssh-copy-id -f pi@$MASTER_NODE
 
 TOKEN=$( ssh -T -o 'StrictHostKeyChecking no' pi@$MASTER_NODE <<'EOF'
 sudo cat /var/lib/rancher/k3s/server/node-token
