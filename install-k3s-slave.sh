@@ -1,7 +1,16 @@
 #!/usr/bin/env bash
 
 #Run as root
-MASTER_NODE="k3smaster.local"
+
+apt update
+apt install -y sshpass
+
+
+MASTER_NODE="k3smaster"
+
+#SSH keyless 
+ssh-keygen -f ~/.ssh/id_rsa -t rsa -N ''
+SSHPASS=raspberry sshpass -e ssh-copy-id pi@k3smaster
 
 TOKEN=$( ssh pi@$MASTER_NODE <<'EOF'
 kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | awk '/^admin-user/{print $1}') | awk '$1=="token:"{print $2}'
