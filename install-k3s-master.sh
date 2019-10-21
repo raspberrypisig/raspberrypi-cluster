@@ -4,7 +4,7 @@
 
 # Hack for allowing remote ssh commands to not include banners
 su pi bash -c "touch /home/pi/.hushlogin"
-rm /etc/profile.d/sshpasswd.sh
+rm /etc/profile.d/sshpwd.sh
 
 apt update
 
