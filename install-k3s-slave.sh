@@ -8,7 +8,7 @@ apt update
 apt install -y sshpass
 
 
-MASTER_NODE="k3smaster"
+MASTER_NODE="k3smaster.local"
 
 #SSH keyless 
 ssh-keygen -f ~/.ssh/id_rsa -t rsa -N ''
