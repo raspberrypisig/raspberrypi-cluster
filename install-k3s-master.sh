@@ -2,6 +2,9 @@
 
 # Run as root
 
+# Hack for allowing remote ssh commands to not include banners
+su pi bash -c "touch /home/pi/.hushlogin"
+
 apt update
 
 # Install k3s as master node
