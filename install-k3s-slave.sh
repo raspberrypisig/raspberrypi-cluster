@@ -25,6 +25,7 @@ curl -sfL https://get.k3s.io | K3S_URL=https://$K3S_SERVER_IP:6443 K3S_TOKEN=$TO
 
 cat<<EOF > /etc/init.d/hack-k3s
 #!/usr/bin/env bash
+MASTER_NODE=$MASTER_NODE
 K3S_SERVER_IP=\$(getent ahostsv4 $MASTER_NODE|head -1|awk '{print \$1}')
 sed -ri "s/K3S_URL=.*/K3S_URL=\$K3S_SERVER_IP/" /etc/systemd/system/k3s-agent.service.env
 EOF
