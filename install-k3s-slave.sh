@@ -33,11 +33,13 @@ chmod 777 /etc/init.d/hack-k3s
 
 cat<<EOF > /etc/systemd/system/hack-k3s.service
 [Unit]
-Description=Hack needed because k3s cannot resolve k3smaster
+[Unit]
+Description=Hack needed because k3s https certs issue 
 Before=k3s-agent.service
+After=network-online.target
 
 [Service]
-Type=simple
+Type=exec
 ExecStart=/usr/local/bin/hack-k3s
 
 [Install]
