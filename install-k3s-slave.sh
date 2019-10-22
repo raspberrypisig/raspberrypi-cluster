@@ -42,6 +42,8 @@ ExecStart=/etc/init.d/hack-k3s
 WantedBy=multi-user.target
 EOF
 
+systemctl daemon-reload
+systemctl enable hack-k3s
 reboot
 
 
