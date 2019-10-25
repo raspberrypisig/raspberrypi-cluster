@@ -8,6 +8,11 @@ set -x
 # - enable SSH, connect to network
 # - rename hostname to k3smaster
 
+# Disable swap
+dphys-swapfile swapoff
+dphys-swapfile uninstall
+systemctl disable dphys-swapfile
+
 # Hack for allowing remote ssh commands to not include banners
 su pi bash -c "touch /home/pi/.hushlogin"
 rm /etc/profile.d/sshpwd.sh
