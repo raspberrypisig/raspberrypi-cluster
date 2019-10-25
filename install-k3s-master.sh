@@ -20,7 +20,7 @@ rm /etc/profile.d/sshpwd.sh
 apt update
 
 # Install k3s as master node
-curl -sfL https://get.k3s.io | K3S_KUBECONFIG_MODE="644" sh -s -
+curl -sfL https://get.k3s.io | K3S_KUBECONFIG_MODE="644" INSTALL_K3S_VERSION="v0.9.1" sh -s -
 
 sleep 400
 
