@@ -28,12 +28,12 @@ On SD card, create an empty file called ssh
 
 ```sh
 # Run as root
-curl -sSL http://bit.ly/31VNeXu | NODE_ROLE=master  bash -
+curl -sSL http://bit.ly/31VNeXu > /tmp/cluster.sh && NODE_ROLE=master bash /tmp/cluster.sh 
 ```
 
 # Install K3S on Slave Node
 ```sh
 # Run as root
-curl -sSL http://bit.ly/31VNeXu | NODE_ROLE=slave  bash -
+curl -sSL http://bit.ly/31VNeXu > /tmp/cluster.sh && NODE_ROLE=slave bash /tmp/cluster.sh 
 ```
 
