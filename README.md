@@ -2,6 +2,8 @@
 
 For testing purposes only.
 
+Setup will create 2 node Kubernetes cluster. Tested on Raspberry Pi 3B and B+. 
+
 # Setup Raspbian Buster Lite
 
 ### Setup wifi
