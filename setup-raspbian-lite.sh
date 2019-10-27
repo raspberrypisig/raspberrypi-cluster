@@ -13,6 +13,9 @@ LOCALE="en_AU.UTF-8"
 TIMEZONE="Australia/Melbourne"
 
 raspi-config nonint do_hostname $HOSTNAME
+hostnamectl set-hostname $HOSTNAME
+systemctl restart avahi-daemon
+
 raspi-config nonint do_configure_keyboard $KEYBOARD
 raspi-config nonint do_change_locale $LOCALE
 raspi-config nonint do_change_timezone $TIMEZONE
