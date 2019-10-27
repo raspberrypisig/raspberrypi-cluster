@@ -82,8 +82,8 @@ systemctl start octant
 
 
 # Install helm
-kubectl apply -f https://github.com/jessestuart/tiller-multiarch/raw/master/manifests/tiller-rbac.yaml
-curl -sSL https://raw.githubusercontent.com/helm/helm/master/scripts/get|bash -
-KUBECONFIG=/etc/rancher/k3s/k3s.yaml helm init --tiller-image=jessestuart/tiller --service-account tiller
+#kubectl apply -f https://github.com/jessestuart/tiller-multiarch/raw/master/manifests/tiller-rbac.yaml
+#curl -sSL https://raw.githubusercontent.com/helm/helm/master/scripts/get|bash -
+#KUBECONFIG=/etc/rancher/k3s/k3s.yaml helm init --tiller-image=jessestuart/tiller --service-account tiller
 
 
