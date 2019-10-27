@@ -8,10 +8,11 @@ Setup will create 2 node Kubernetes cluster. Tested on Raspberry Pi 3B and B+.
 
 ### Setup wifi
 
-On SD card, create a wpa-supplicant.conf that looks like this
+On SD card, create a wpa_supplicant.conf that looks like this
 ```text
 ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
 update_config=1
+country=GB
 
 network={
   ssid="mycrib"
