@@ -1,2 +1,2 @@
 # Run as root
-curl -sSL http://bit.ly/31VNeXu | NODE_ROLE=slave bash -
+curl -sSL https://raw.githubusercontent.com/raspberrypisig/raspberrypi-cluster/master/get.sh | NODE_ROLE=slave bash -
