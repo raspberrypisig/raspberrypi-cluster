@@ -37,7 +37,7 @@ Boot into Raspbian, then execute
 
 ```sh
 # Run as root
-bash /boot/create-master.sh | tee master.log
+bash /boot/create-master.sh
 ```
 
 # Install K3S on Slave Node
@@ -45,6 +45,6 @@ bash /boot/create-master.sh | tee master.log
 Boot into Raspbian, then execute
 ```sh
 # Run as root
-bash /boot/create-slave.sh | tee slave.log
+bash /boot/create-slave.sh
 ```
 
