@@ -27,7 +27,7 @@ network={
 On SD card, create an empty file called ssh
 
 ### Step 3: Copy master or slave script
-Copy either [master script](https://raw.githubusercontent.com/raspberrypisig/raspberrypi-cluster/master/install-k3s-master.sh) or
+Copy either [master script](https://raw.githubusercontent.com/raspberrypisig/raspberrypi-cluster/master/create-master.sh) or
 [slave script](https://raw.githubusercontent.com/raspberrypisig/raspberrypi-cluster/master/create-slave.sh) to SD card 
 
 
