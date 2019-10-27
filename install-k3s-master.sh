@@ -3,11 +3,6 @@ set -x
 
 # Run as root
 
-# Before running this script, do the following
-#
-# - enable SSH, connect to network
-# - rename hostname to k3smaster
-
 # Disable swap
 dphys-swapfile swapoff
 dphys-swapfile uninstall
@@ -16,8 +11,6 @@ systemctl disable dphys-swapfile
 # Hack for allowing remote ssh commands to not include banners
 su pi bash -c "touch /home/pi/.hushlogin"
 rm /etc/profile.d/sshpwd.sh
-
-apt update
 
 # Install k3s as master node
 curl -sfL https://get.k3s.io | K3S_KUBECONFIG_MODE="644" INSTALL_K3S_VERSION="v0.9.1" sh -s -
