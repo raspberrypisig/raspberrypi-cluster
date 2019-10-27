@@ -6,7 +6,9 @@ Setup will create 2 node Kubernetes cluster. Tested on Raspberry Pi 3B and B+.
 
 # Setup Raspbian Buster Lite
 
-### Setup wifi
+Start with a fresh Raspbian.
+
+### Step1: Setup wifi
 
 On SD card, create a wpa_supplicant.conf that looks like this
 ```text
@@ -20,20 +22,29 @@ network={
 }
 ```
 
-### Setup SSH
+### Step 2: Setup SSH
 
 On SD card, create an empty file called ssh
 
+### Step 3: Copy master or slave script
+Copy either [master script](https://raw.githubusercontent.com/raspberrypisig/raspberrypi-cluster/master/install-k3s-master.sh) or
+[slave script](https://raw.githubusercontent.com/raspberrypisig/raspberrypi-cluster/master/create-slave.sh) to SD card 
+
+
 # Install K3S on Master Node
+
+Boot into Raspbian, then execute
 
 ```sh
 # Run as root
-curl -sSL http://bit.ly/31VNeXu > /tmp/cluster.sh && NODE_ROLE=master bash /tmp/cluster.sh 
+bash /boot/create-master.sh
 ```
 
 # Install K3S on Slave Node
+
+Boot into Raspbian, then execute
 ```sh
 # Run as root
-curl -sSL http://bit.ly/31VNeXu > /tmp/cluster.sh && NODE_ROLE=slave bash /tmp/cluster.sh 
+bash /boot/create-slave.sh
 ```
 
