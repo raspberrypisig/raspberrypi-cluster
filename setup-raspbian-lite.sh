@@ -1,5 +1,12 @@
 #!/usr/bin/env bash
 
+# Run as root
+if [ ! `id -u` -eq 0 ];
+then
+  echo "Please run script as root."
+  exit 1
+fi
+
 SSID=mycrib
 PASSPHRASE=peachspeak38
 
