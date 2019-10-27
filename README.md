@@ -6,17 +6,6 @@ For testing purposes only.
 
 ### Setup wifi
 
-OPTION 1
-
-```sh
-#Run as root
-SSID=mycrib
-PASSPHRASE=peachspeak38
-raspi-config nonint do_wifi_ssid_passphrase $SSID $PASSPHRASE
-```
-
-OPTION 2
-
 On SD card, create a wpa-supplicant.conf that looks like this
 ```text
 ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
@@ -28,4 +17,7 @@ network={
 }
 ```
 
+### Setup SSH
+
+On SD card, create an empty file called ssh
 
