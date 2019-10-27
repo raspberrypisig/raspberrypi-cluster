@@ -69,8 +69,8 @@ Environment=HOME=/root
 Environment=KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 Environment=OCTANT_DISABLE_OPEN_BROWSER=1
 Environment=OCTANT_LISTENER_ADDR=0.0.0.0:7777
-ExecStart=/home/pi/octant/build/octant 
-WorkingDirectory=/home/pi/octant
+ExecStart=/usr/local/bin/octant 
+WorkingDirectory=/home/pi
 
 [Install]
 WantedBy=multi-user.target
