@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -xe
+
 # Run as root
 if [ ! `id -u` -eq 0 ];
 then
