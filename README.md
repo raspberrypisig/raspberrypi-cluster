@@ -21,3 +21,16 @@ network={
 
 On SD card, create an empty file called ssh
 
+# Install K3S on Master Node
+
+```sh
+# Run as root
+curl -sSL https://raw.githubusercontent.com/raspberrypisig/raspberrypi-cluster/master/get.sh | NODE_ROLE=master  bash -
+```
+
+# Install K3S on Slave Node
+```sh
+# Run as root
+curl -sSL https://raw.githubusercontent.com/raspberrypisig/raspberrypi-cluster/master/get.sh | NODE_ROLE=slave  bash -
+```
+
