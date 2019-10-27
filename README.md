@@ -12,7 +12,7 @@ On SD card, create a wpa_supplicant.conf that looks like this
 ```text
 ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
 update_config=1
-country=GB
+country=AU
 
 network={
   ssid="mycrib"
