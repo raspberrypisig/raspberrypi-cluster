@@ -46,14 +46,11 @@ EOF
 #kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | awk '/^admin-user/{print $1}') | awk '$1=="token:"{print $2}' > token.txt
 
 #Download and run octant
-mkdir octant
-cd octant
-wget https://github.com/raspberrypisig/octant/raw/master/build/octant.xz
+git clone --depth 1 https://github.com/raspberrypisig/octant
+cd octant/build
 xz -d octant.xz
 chmod 777 octant
-cp octant /usr/local/bin
-cd ..
-rm -rf octant
+cd ../..
 
 # Install Octant service
 
@@ -69,8 +66,8 @@ Environment=HOME=/root
 Environment=KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 Environment=OCTANT_DISABLE_OPEN_BROWSER=1
 Environment=OCTANT_LISTENER_ADDR=0.0.0.0:7777
-ExecStart=/usr/local/bin/octant 
-WorkingDirectory=/home/pi
+ExecStart=/home/pi/octant/build/octant
+WorkingDirectory=/home/pi/octant
 
 [Install]
 WantedBy=multi-user.target
