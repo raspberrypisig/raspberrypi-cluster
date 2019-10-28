@@ -22,6 +22,8 @@ network={
 }
 ```
 
+File available [here](https://github.com/raspberrypisig/raspberrypi-cluster/raw/master/wpa_supplicant.conf)
+
 ### Step 2: Setup SSH
 
 On SD card, create an empty file called ssh
