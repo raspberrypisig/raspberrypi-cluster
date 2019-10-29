@@ -4,9 +4,7 @@ Requires=avahi-daemon.service
 
 [Service]
 Type=simple
-ExecStart=/usr/local/bin/avahi-alias.py start
-ExecStop=/usr/local/bin/avahi-alias.py stop
-ExecReload=/usr/local/bin/avahi-alias.py restart
+ExecStart=/usr/local/bin/avahi-alias.py HOSTNAMES
 
 [Install]
 WantedBy=multi-user.target
