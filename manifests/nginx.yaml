@@ -27,7 +27,6 @@ spec:
   clusterIP: 10.43.0.100
   ports:
   - port: 80
-    targetPort: 80
     protocol: TCP
     name: http
   selector:
