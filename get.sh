@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
-
 set -xe
+
+# Run as root
 
 apt update
 apt install -y git
