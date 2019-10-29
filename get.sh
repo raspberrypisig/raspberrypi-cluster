@@ -2,7 +2,6 @@
 
 set -xe
 
-cd /tmp
 apt update
 apt install -y git
 git clone https://github.com/raspberrypisig/raspberrypi-cluster
