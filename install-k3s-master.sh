@@ -2,6 +2,7 @@
 set -xe
 
 # Run as root
+cd /tmp
 
 # Disable swap
 dphys-swapfile swapoff
