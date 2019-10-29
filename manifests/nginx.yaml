@@ -38,7 +38,7 @@ metadata:
   name: nginx-ingress
 spec:
   rules:
-  - host: nginx.k3smaster.local
+  - host: nginx-k3smaster.local
     http:
       paths:
       - path: /
