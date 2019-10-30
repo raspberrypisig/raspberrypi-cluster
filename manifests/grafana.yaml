@@ -24,6 +24,8 @@ spec:
             value: "true"
           - name: GF_AUTH_ANONYMOUS_ORG_ROLE
             value: "Admin"
+          - name: GF_USERS_ALLOW_SIGN_UP
+            value: "false"
 ---
 apiVersion: v1
 kind: Service
