@@ -20,6 +20,7 @@ sleep 40
 
 bash zeroconf-avahi/install-avahi-alias.sh
 bash manifests/install-manifests.sh
+bash extras/install-extras.sh
 
 # Install Kubernetes Dashboard
 #kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0-beta5/aio/deploy/alternative.yaml
