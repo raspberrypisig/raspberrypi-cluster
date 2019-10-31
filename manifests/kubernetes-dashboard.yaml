@@ -283,3 +283,18 @@ spec:
       volumes:
         - name: tmp-volume
           emptyDir: {}
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: kubernetes-ingress
+  namespace: kubernetes-dashboard
+spec:
+  rules:
+  - host: dashboard-k3smaster.local
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: kubernetes-dashboard
+          servicePort: 80
