@@ -7,6 +7,6 @@ for script in `ls *.sh`
 do
   if [ ! $script = $0 ];
   then
-    bash $script
+    bash "$script"
   fi
 done
