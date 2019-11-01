@@ -1,0 +1,33 @@
+data:
+  traefik.toml: |
+    # traefik.toml
+    logLevel = "info"
+    defaultEntryPoints = ["http","https"]
+    [api]
+      entryPoint = "traefik"
+    [entryPoints]
+      [entryPoints.traefik]
+      address = ":8080"
+      [entryPoints.http]
+      address = ":80"
+      compress = true
+      [entryPoints.https]
+      address = ":443"
+      compress = true
+        [entryPoints.https.tls]
+          [[entryPoints.https.tls.certificates]]
+          CertFile = "/ssl/tls.crt"
+          KeyFile = "/ssl/tls.key"
+    [ping]
+    entryPoint = "http"
+    [kubernetes]
+      [kubernetes.ingressEndpoint]
+      publishedService = "kube-system/traefik"
+    [traefikLog]
+      format = "json"
+    [metrics]
+      [metrics.prometheus]
+        entryPoint = "traefik"
+metadata:
+  labels:
+    app: traefik
