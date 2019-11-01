@@ -5,5 +5,8 @@ cd $DIR
 
 for script in `ls *.sh`
 do
-  bash $script
+  if [ ! $script = $0 ];
+  then
+    bash $script
+  fi
 done
