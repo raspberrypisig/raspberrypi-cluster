@@ -27,7 +27,7 @@ kubectl -n kube-system delete pod $(kubectl -n kube-system get pods | awk '/^tra
 #kubectl rollout restart deployment/traefik -n kube-system
 sleep 60
 
-cat<<EOF | kubectl create -f -
+cat<<EOF | kubectl apply -f -
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
