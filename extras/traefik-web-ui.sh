@@ -3,6 +3,16 @@ set -x
 
 while true
 do
+  isReady=$(kube-ctl -n kube-system get deployment traefik -o jsonpath='{.status.readyReplicas}')
+  if [ -n $isready ];
+  then
+    break
+  fi
+  sleep 30
+done
+
+while true
+do
   kubectl -n kube-system get configmap traefik 2>/dev/null >/dev/null
   if [ $? -eq 0 ];
   then
