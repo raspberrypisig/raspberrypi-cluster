@@ -3,7 +3,7 @@ set -x
 
 while true
 do
-  isReady=$(kube-ctl -n kube-system get deployment traefik -o jsonpath='{.status.readyReplicas}')
+  isReady=$(kubectl -n kube-system get deployment traefik -o jsonpath='{.status.readyReplicas}')
   if [ -n $isready ];
   then
     break
