@@ -1,1 +1,1 @@
-nginx-k3smaster.local grafana-k3smaster.local dashboard-k3smaster.local
+nginx-k3smaster.local grafana-k3smaster.local dashboard-k3smaster.local traefik-k3smaster.local
