@@ -298,3 +298,10 @@ spec:
         backend:
           serviceName: kubernetes-dashboard
           servicePort: 80
+  - host: dashboard.k3smaster.local
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: kubernetes-dashboard
+          servicePort: 80
