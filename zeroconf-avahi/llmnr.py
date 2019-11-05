@@ -36,13 +36,15 @@ while 1:
         data_response[2] = 0x80
         data_response[7] = 0x01
         hostname = bytearray(data[12: 12 + hostname_length + 6])
-        answer_header = b'\x00\01\x00\x01\x00\x00\x00\x1e\x00\x04'
+        answer_header = b'\x00\x00\x00\x1e\x00\x04'
         IP = socket.gethostbyname('k3smaster.local')
         ip_octals = bytearray(map(int, IP.split('.')))
         #print(type(record_type))
         if record_type == "0x1":
-            print("From: ", addr)
-            print("Data: ", data)
-            print("TransactionID: ", data[0:2])
-            print("recordtype(hex): ", hex(data[12 + hostname_length + 3]))
-            print("response: ", data_response + hostname + answer_header + ip_octals)
+            #print("From: ", addr)
+            #print("Data: ", data)
+            #print("TransactionID: ", data[0:2])
+            #print("recordtype(hex): ", hex(data[12 + hostname_length + 3]))
+            response = data_response + hostname + answer_header + ip_octals
+            #print("response: ", data_response + hostname + answer_header + ip_octals)
+            sock.sendto(response,addr)
