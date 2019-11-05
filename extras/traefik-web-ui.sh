@@ -40,4 +40,11 @@ spec:
         backend:
           serviceName: traefik
           servicePort: 8080
+  - host: traefik.k3smaster.local
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: traefik
+          servicePort: 8080
 EOF
