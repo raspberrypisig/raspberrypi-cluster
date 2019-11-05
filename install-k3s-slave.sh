@@ -2,7 +2,7 @@
 
 #Run as root
 
-rm /etc/xdg/autostart/pprompt.desktop
+rm -f /etc/xdg/autostart/pprompt.desktop
 
 apt update
 apt install -y sshpass
@@ -12,10 +12,9 @@ MASTER_NODE="k3smaster.local"
 
 #SSH keyless 
 ssh-keygen -f ~/.ssh/id_rsa -t rsa -N ''
-`SSHPASS=raspberry sshpass -e ssh-copy-id -f pi@$MASTER_NODE`
-ssh -p raspberry -T -o StrictHostKeyChecking=no pi@$MASTER_NODE exit
+sshpass -p raspberry ssh-copy-id -o StrictHostKeyChecking=no pi@$MASTER_NODE
 
-TOKEN=$( ssh -p raspberry -T -o StrictHostKeyChecking=no pi@$MASTER_NODE <<'EOF'
+TOKEN=$( ssh -T -o StrictHostKeyChecking=no pi@$MASTER_NODE <<'EOF'
 sudo cat /var/lib/rancher/k3s/server/node-token
 EOF
 )
