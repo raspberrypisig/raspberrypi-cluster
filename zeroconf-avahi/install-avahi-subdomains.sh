@@ -12,7 +12,7 @@ systemctl restart avahi-daemon
 cat<<EOF > /usr/local/bin/avahi-subdomain
 #!/usr/bin/env bash
 set -xe
-IP="\$(getent ahostsv4 k3smaster.local | head -1 | awk '{print $1}')"
+IP="\$(getent ahostsv4 k3smaster.local | head -1 | awk '{print \$1}')"
 SUBDOMAINS="$(cat SUBDOMAINS_K3SMASTER)"
 for subdomain in \$SUBDOMAINS
 do
