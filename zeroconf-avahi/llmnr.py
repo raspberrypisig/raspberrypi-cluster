@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import socket
+from pathlib import Path
 
 ANY = "0.0.0.0"
 MCAST_ADDR = "224.0.0.252"
@@ -24,9 +25,22 @@ socket.inet_aton(MCAST_ADDR) + socket.inet_aton(ANY))
 # But this will raise an error if recv() or send() can't immediately find or send data.
 sock.setblocking(0)
 
+def parseHostname(data):
+    nameLen = data[12]
+    print(nameLen)
+    return data[13:13+nameLen]
+
 while 1:
     try:
         data, addr = sock.recvfrom(1024)
+        hn = parseHostname(data)
+        #print(hn)
+        subdomains = Path('SUBDOMAINS_K3SMASTER').read_text().split(' ')
+        boo=[str(hn).find(i + '-')!=-1 for i in subdomains]
+        if True in boo:
+            pass
+        else:
+            continue
     except socket.error as e:
         pass
     else:
