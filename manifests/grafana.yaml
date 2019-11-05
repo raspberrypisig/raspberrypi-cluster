@@ -54,3 +54,10 @@ spec:
         backend:
           serviceName: grafana-service
           servicePort: http
+  - host: grafana.k3smaster.local
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: grafana-service
+          servicePort: http
