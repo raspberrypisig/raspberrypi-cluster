@@ -15,7 +15,12 @@ IP="\$(getent ahostsv4 k3smaster.local | head -1 | awk '{print $1}')"
 SUBDOMAINS="$(cat SUBDOMAINS_K3SMASTER)"
 for subdomain in \$SUBDOMAINS
 do
-  avahi-publish-address -R \$\{subdomain\}.k3smaster.local &
+  avahi-publish-address -R \${subdomain}.k3smaster.local &
+done
+
+while True
+do
+sleep 30
 done
 EOF
 
