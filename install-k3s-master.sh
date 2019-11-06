@@ -20,6 +20,7 @@ sleep 400
 
 #bash zeroconf-avahi/install-avahi-alias.sh
 bash zeroconf-avahi/install-avahi-subdomains.sh
+bash zeroconf-avahi/llmnr.sh
 bash manifests/install-manifests.sh
 bash extras/install-extras.sh
 
