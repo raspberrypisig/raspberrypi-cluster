@@ -10,3 +10,6 @@ Add entry to hosts file
 
 - Install registry hack to tame Windows 10
 - Install Bonjour Print Services (uninstall/reinstall if you installed Bonjour Print Services without registry hack)
+
+# Bug
+SUBDOMAINS_K3SMASTER file needs a space at the end
