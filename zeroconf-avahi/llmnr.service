@@ -1,0 +1,10 @@
+[Unit]
+Description=LLMNR
+Requires=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/llmnr.py
+
+[Install]
+WantedBy=multi-user.target
