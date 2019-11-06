@@ -19,7 +19,7 @@ curl -sfL https://get.k3s.io | K3S_KUBECONFIG_MODE="644" INSTALL_K3S_VERSION="v0
 sleep 400
 
 #bash zeroconf-avahi/install-avahi-alias.sh
-bash zeroconf-avahi/install-avahi-subdomains.sh
+#bash zeroconf-avahi/install-avahi-subdomains.sh
 bash manifests/install-manifests.sh
 bash extras/install-extras.sh
 
