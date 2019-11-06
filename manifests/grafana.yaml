@@ -32,8 +32,6 @@ kind: Service
 metadata:
   name: grafana-service
 spec:
-  type: ClusterIP
-  clusterIP: 10.43.0.101
   ports:
   - name: http
     port: 3000
