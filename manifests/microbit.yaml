@@ -1,0 +1,52 @@
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: microbit-deployment
+spec:
+  selector:
+    matchLabels:
+      app: microbit
+  replicas: 1 # tells deployment to run 2 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: microbit
+    spec:
+      containers:
+      - name: microbit
+        image: mohankumargupta/microbit
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: microbit-service
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    name: http
+  selector:
+    app: microbit
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: microbit-ingress
+spec:
+  rules:
+  - host: microbit-k3smaster.local
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: microbit-service
+          servicePort: http
+  - host: microbit.k3smaster.local
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: microbit-service
+          servicePort: http
