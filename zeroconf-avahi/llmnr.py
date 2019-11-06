@@ -35,7 +35,7 @@ while 1:
         data, addr = sock.recvfrom(1024)
         hn = parseHostname(data)
         #print(hn)
-        subdomains = Path('SUBDOMAINS_K3SMASTER').read_text().split(' ')
+        subdomains = Path('/etc/llmnr/SUBDOMAINS_K3SMASTER').read_text().split(' ')
         boo=[str(hn).find(i + '-')!=-1 for i in subdomains]
         if True in boo:
             pass
