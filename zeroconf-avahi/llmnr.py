@@ -36,8 +36,9 @@ while 1:
         hn = parseHostname(data)
         #print(hn)
         subdomains = Path('/etc/llmnr/SUBDOMAINS_K3SMASTER').read_text().split(' ')
+        subdomains = subdomains + " k3smaster"
         boo=[str(hn).find(i + '-')!=-1 for i in subdomains]
-        if True in boo:
+        if True in boo or hn == "k3smaster":
             pass
         else:
             continue
