@@ -15,6 +15,7 @@ then
 fi
 
 if [ $NODE_ROLE = 'slave' ];
+then
   read -p "Enter hostname for slave: " HOSTNAME
 fi
 
