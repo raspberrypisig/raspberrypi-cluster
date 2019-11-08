@@ -39,7 +39,7 @@ while 1:
         #print(hn)
         subdomains = Path('/etc/llmnr/SUBDOMAINS_K3SMASTER').read_text().split(' ')
         subdomains = subdomains + ["k3smaster"]
-        boo=[str(hn).find(i.rsplit())!=-1 for i in subdomains]
+        boo=[str(hn).find(i.rsplit()[0])!=-1 for i in subdomains]
         if True in boo or str(hn) == "k3smaster":
             pass
         else:
