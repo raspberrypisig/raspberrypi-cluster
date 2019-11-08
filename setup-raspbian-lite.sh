@@ -11,20 +11,20 @@ fi
 
 if [ $NODE_ROLE = "master" ];
 then
-  hostname=k3smaster
+  hn="k3smaster"
 fi
 
 if [ $NODE_ROLE = "slave" ];
 then
-  read -p "Enter hostname for slave: " hostname
+  read -p "Enter hostname for slave: " hn
 fi
 
 KEYBOARD=us
 LOCALE="en_AU.UTF-8"
 TIMEZONE="Australia/Melbourne"
 
-raspi-config nonint do_hostname $hostname
-hostnamectl set-hostname $hostname
+raspi-config nonint do_hostname $hn
+hostnamectl set-hostname $hn
 systemctl restart avahi-daemon
 
 raspi-config nonint do_configure_keyboard $KEYBOARD
