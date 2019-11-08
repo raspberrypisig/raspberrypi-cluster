@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-set -xe
-
 # Run as root
 if [ ! `id -u` -eq 0 ];
 then
@@ -9,12 +7,12 @@ then
   exit 1
 fi
 
-if [ $NODE_ROLE = 'master' ];
+if [ $NODE_ROLE = "master" ];
 then
   HOSTNAME=k3smaster
 fi
 
-if [ $NODE_ROLE = 'slave' ];
+if [ $NODE_ROLE = "slave" ];
 then
   read -p "Enter hostname for slave: " HOSTNAME
 fi
