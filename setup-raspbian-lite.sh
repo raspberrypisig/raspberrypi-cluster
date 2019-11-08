@@ -9,7 +9,15 @@ then
   exit 1
 fi
 
-HOSTNAME=k3smaster
+if [ $NODE_ROLE = 'master' ];
+then
+  HOSTNAME=k3smaster
+fi
+
+if [ $NODE_ROLE = 'slave' ];
+  read -p "Enter hostname for slave: " HOSTNAME
+fi
+
 KEYBOARD=us
 LOCALE="en_AU.UTF-8"
 TIMEZONE="Australia/Melbourne"
