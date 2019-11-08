@@ -16,7 +16,7 @@ fi
 
 if [ $NODE_ROLE = "slave" ];
 then
-  hn = $NEWHOSTNAME
+  hn=$NEWHOSTNAME
 fi
 
 KEYBOARD=us
