@@ -27,18 +27,20 @@ sock.setblocking(0)
 
 def parseHostname(data):
     nameLen = data[12]
-    print(nameLen)
+    #print(nameLen)
     return data[13:13+nameLen]
 
 while 1:
     try:
         data, addr = sock.recvfrom(1024)
         hn = parseHostname(data)
+        if str(hn).find('k3smaster') == -1:
+            continue
         #print(hn)
         subdomains = Path('/etc/llmnr/SUBDOMAINS_K3SMASTER').read_text().split(' ')
-        subdomains = subdomains + " k3smaster"
-        boo=[str(hn).find(i + '-')!=-1 for i in subdomains]
-        if True in boo or hn == "k3smaster":
+        subdomains = subdomains + ["k3smaster"]
+        boo=[str(hn).find(i.rsplit())!=-1 for i in subdomains]
+        if True in boo or str(hn) == "k3smaster":
             pass
         else:
             continue
