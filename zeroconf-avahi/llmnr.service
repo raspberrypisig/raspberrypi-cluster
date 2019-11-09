@@ -3,8 +3,9 @@ Description=LLMNR
 Requires=network-online.target
 
 [Service]
-Type=simple
+Type=forking
 ExecStart=/usr/local/bin/llmnr.py
+Restart=on-failure
 
 [Install]
 WantedBy=multi-user.target
