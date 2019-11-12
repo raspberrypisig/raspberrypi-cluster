@@ -5,7 +5,7 @@ Requires=network-online.target
 [Service]
 Type=forking
 ExecStart=/usr/local/bin/llmnr.py
-Restart=on-failure
+TimeoutSec=infinity
 
 [Install]
 WantedBy=multi-user.target
