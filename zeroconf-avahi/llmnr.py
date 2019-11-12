@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 import socket
 from pathlib import Path
+from time import sleep
+
+sleep(60)
 
 ANY = "0.0.0.0"
 MCAST_ADDR = "224.0.0.252"
