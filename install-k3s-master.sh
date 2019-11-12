@@ -19,10 +19,10 @@ curl -sfL https://get.k3s.io | K3S_KUBECONFIG_MODE="644" INSTALL_K3S_VERSION="v0
 sleep 400
 
 #bash zeroconf-avahi/install-avahi-alias.sh
-bash zeroconf-avahi/install-avahi-subdomains.sh
-bash zeroconf-avahi/llmnr.sh
-bash manifests/install-manifests.sh
-bash extras/install-extras.sh
+bash zeroconf-avahi/install-avahi-subdomains.sh | tee avahi.log
+bash zeroconf-avahi/llmnr.sh | tee llmnr.log
+bash manifests/install-manifests.sh | tee manifests.log
+bash extras/install-extras.sh | tee extras.log
 
 # Install Kubernetes Dashboard
 #kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0-beta5/aio/deploy/alternative.yaml
