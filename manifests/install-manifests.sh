@@ -5,5 +5,5 @@ cd $DIR
 for manifest in `ls *.yaml`
 do
   kubectl create -f $manifest
-  sleep 200
+  sleep 300
 done
