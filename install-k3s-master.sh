@@ -11,7 +11,7 @@ systemctl disable dphys-swapfile
 
 # Hack for allowing remote ssh commands to not include banners
 su pi bash -c "touch /home/pi/.hushlogin"
-rm /etc/profile.d/sshpwd.sh
+rm -f /etc/profile.d/sshpwd.sh
 
 # Install k3s as master node
 curl -sfL https://get.k3s.io | K3S_KUBECONFIG_MODE="644" INSTALL_K3S_VERSION="v0.11.0-alpha2" sh -s -
