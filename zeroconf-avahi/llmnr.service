@@ -3,7 +3,7 @@ Description=LLMNR
 Requires=network-online.target
 
 [Service]
-Type=forking
+Type=simple
 ExecStart=/usr/local/bin/llmnr.py
 TimeoutSec=infinity
 
