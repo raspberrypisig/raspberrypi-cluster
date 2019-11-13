@@ -5,7 +5,7 @@ set -xe
 
 apt update
 apt install -y git
-git clone --depth 1 https://github.com/raspberrypisig/raspberrypi-cluster
+git clone --branch experimental https://github.com/raspberrypisig/raspberrypi-cluster
 cd raspberrypi-cluster
 chmod 744 ./setup-raspbian-lite.sh
 NODE_ROLE=$NODE_ROLE bash setup-raspbian-lite.sh
