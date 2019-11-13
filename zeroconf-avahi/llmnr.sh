@@ -10,4 +10,4 @@ mkdir -p /etc/llmnr
 cp SUBDOMAINS_K3SMASTER /etc/llmnr
 systemctl daemon-reload
 systemctl enable llmnr
-systemctl start llmnr
+systemctl start llmnr &
