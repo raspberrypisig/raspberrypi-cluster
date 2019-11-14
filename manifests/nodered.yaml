@@ -59,7 +59,7 @@ spec:
     spec:
       containers:
       - name: nodered
-        image: nodered/node-red:1.0.2-10
+        image: nodered/node-red:1.0.2-10-minimal
         ports:
         - containerPort: 1880
         volumeMounts:
