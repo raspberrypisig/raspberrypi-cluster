@@ -18,6 +18,18 @@ curl -sfL https://get.k3s.io | K3S_KUBECONFIG_MODE="644" INSTALL_K3S_VERSION="v0
 
 sleep 400
 
+kubectl delete storageclass local-path
+sleep 10
+cat<<EOF | kubectl apply -f -
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: local-path
+provisioner: rancher.io/local-path
+volumeBindingMode: WaitForFirstConsumer
+reclaimPolicy: Retain
+EOF
+
 #bash zeroconf-avahi/install-avahi-alias.sh
 bash zeroconf-avahi/install-avahi-subdomains.sh | tee avahi.log
 bash zeroconf-avahi/llmnr.sh | tee llmnr.log
