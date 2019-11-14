@@ -31,10 +31,8 @@ reclaimPolicy: Retain
 EOF
 
 #bash zeroconf-avahi/install-avahi-alias.sh
-bash zeroconf-avahi/install-avahi-subdomains.sh | tee avahi.log
-bash zeroconf-avahi/llmnr.sh | tee llmnr.log
-bash manifests/install-manifests.sh | tee manifests.log
-bash extras/install-extras.sh | tee extras.log
+bash zeroconf-avahi/install-avahi-subdomains.sh | tee /home/pi/avahi.log
+bash zeroconf-avahi/llmnr.sh | tee /home/pi/llmnr.log
+bash manifests/install-manifests.sh | tee /home/pi/manifests.log
+bash extras/install-extras.sh | tee /home/pi/extras.log
 
-# Install Kubernetes Dashboard
-#kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0-beta5/aio/deploy/alternative.yaml
