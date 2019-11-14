@@ -1,12 +1,54 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nred
+spec:
+  clusterIP: None
+  selector:
+    app: nodered
+  ports:
+  - protocol: TCP
+    name: web
+    port: 80
+    targetPort: 1880
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nodered-ingress-1
+spec:
+  selector:
+    app: nodered
+  ports:
+  - protocol: TCP
+    name: web
+    port: 80
+    targetPort: 1880
+  type: ExternalName
+  externalName: nodered-0.nred
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nodered-ingress-2
+spec:
+  selector:
+    app: nodered
+  ports:
+  - protocol: TCP
+    name: web
+    port: 80
+    targetPort: 1880
+  type: ExternalName
+  externalName: nodered-1.nred
 ---
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: nodered
-  labels:
-    app: nodered
 spec:
-  replicas: 1
+  serviceName: nred
+  replicas: 2
   selector:
     matchLabels:
       app: nodered
@@ -18,22 +60,19 @@ spec:
       containers:
       - name: nodered
         image: nodered/node-red:1.0.2-10
-        imagePullPolicy: Always
         ports:
         - containerPort: 1880
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: nodered
-spec:
-  selector:
-    app: nodered
-  ports:
-  - protocol: TCP
-    name: web
-    port: 80
-    targetPort: 1880
+        volumeMounts:
+        - name: nodered
+          mountPath: /data
+  volumeClaimTemplates:
+  - metadata:
+      name: nodered
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 100Mi
 ---
 apiVersion: extensions/v1beta1
 kind: Ingress
@@ -41,13 +80,25 @@ metadata:
   name: nodered-ingress
 spec:
   rules:
-  - host: nodered-k3smaster.local
+  - host: nodered1-k3smaster.local
+    http:
+      paths:
+      - backend:
+          serviceName: nodered-ingress-1
+          servicePort: 80
+  - host: nodered1.k3smaster.local
+    http:
+      paths:
+      - backend:
+          serviceName: nodered-ingress-2
+          servicePort: 80
+  - host: nodered2-k3smaster.local
     http:
       paths:
       - backend:
           serviceName: nodered
           servicePort: 80
-  - host: nodered.k3smaster.local
+  - host: nodered2.k3smaster.local
     http:
       paths:
       - backend:
