@@ -29,7 +29,7 @@ metadata:
     storageclass.kubernetes.io/is-default-class: "true"
 provisioner: rancher.io/local-path
 volumeBindingMode: WaitForFirstConsumer
-reclaimPolicy: Delete
+reclaimPolicy: Retain
 EOF
 
 #bash zeroconf-avahi/install-avahi-alias.sh
