@@ -20,4 +20,5 @@ EOF
 )
 
 K3S_SERVER_IP=$(getent ahostsv4 $MASTER_NODE|head -1|awk '{print $1}')
-curl -sfL https://get.k3s.io | K3S_KUBECONFIG_MODE="644" INSTALL_K3S_VERSION="v0.9.1" K3S_URL=https://$K3S_SERVER_IP:6443 K3S_TOKEN=$TOKEN sh -
+K3S_VERSION=$(cat K3S_VERSION)
+curl -sfL https://get.k3s.io | K3S_KUBECONFIG_MODE="644" INSTALL_K3S_VERSION="$K3S_VERSION" K3S_URL=https://$K3S_SERVER_IP:6443 K3S_TOKEN=$TOKEN sh -
