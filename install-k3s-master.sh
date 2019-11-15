@@ -14,7 +14,8 @@ su pi bash -c "touch /home/pi/.hushlogin"
 rm -f /etc/profile.d/sshpwd.sh
 
 # Install k3s as master node
-curl -sfL https://get.k3s.io | K3S_KUBECONFIG_MODE="644" INSTALL_K3S_VERSION="v0.11.0-alpha2" sh -s -
+K3S_VERSION=$(cat K3S_VERSION)
+curl -sfL https://get.k3s.io | K3S_KUBECONFIG_MODE="644" INSTALL_K3S_VERSION="$K3S_VERSION" sh -s -
 
 sleep 400
 
