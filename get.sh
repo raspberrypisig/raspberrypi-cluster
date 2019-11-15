@@ -3,7 +3,7 @@ set -xe
 
 # Run as root
 
-apt update
+apt -y update
 apt install -y git
 git clone https://github.com/raspberrypisig/raspberrypi-cluster
 cd raspberrypi-cluster
