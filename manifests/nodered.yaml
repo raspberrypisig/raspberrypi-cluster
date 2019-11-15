@@ -19,8 +19,6 @@ kind: Service
 metadata:
   name: nodered-0
 spec:
-  type: LoadBalancer
-  externalTrafficPolicy: Local
   selector:
     statefulset.kubernetes.io/pod-name: nodered-0
   ports:
@@ -33,8 +31,6 @@ kind: Service
 metadata:
   name: nodered-1
 spec:
-  type: LoadBalancer
-  externalTrafficPolicy: Local
   selector:
     statefulset.kubernetes.io/pod-name: nodered-1
   ports:
