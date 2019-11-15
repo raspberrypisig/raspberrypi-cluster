@@ -99,34 +99,3 @@ spec:
       resources:
         requests:
           storage: 100Mi
----
-apiVersion: extensions/v1beta1
-kind: Ingress
-metadata:
-  name: nodered-ingress
-spec:
-  rules:
-  - host: nodered1-k3smaster.local
-    http:
-      paths:
-      - backend:
-          serviceName: nodered-ingress-1
-          servicePort: 80
-  - host: nodered1.k3smaster.local
-    http:
-      paths:
-      - backend:
-          serviceName: nodered-ingress-2
-          servicePort: 80
-  - host: nodered2-k3smaster.local
-    http:
-      paths:
-      - backend:
-          serviceName: nodered
-          servicePort: 80
-  - host: nodered2.k3smaster.local
-    http:
-      paths:
-      - backend:
-          serviceName: nodered
-          servicePort: 80
