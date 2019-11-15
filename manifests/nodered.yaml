@@ -1,12 +1,76 @@
----
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: v1
+kind: Service
 metadata:
-  name: nodered
+  name: nred
   labels:
     app: nodered
 spec:
-  replicas: 1
+  clusterIP: None
+  selector:
+    app: nodered
+  ports:
+  - protocol: TCP
+    name: web
+    port: 80
+    targetPort: 1880
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nodered-0
+spec:
+  selector:
+    statefulset.kubernetes.io/pod-name: nodered-0
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 1880
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nodered-1
+spec:
+  selector:
+    statefulset.kubernetes.io/pod-name: nodered-1
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 1880
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: nodered-0-ingress
+spec:
+  rules:
+  - host: nodered0-k3smaster.local
+    http:
+      paths:
+      - backend:
+          serviceName: nodered-0
+          servicePort: 80
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: nodered-1-ingress
+spec:
+  rules:
+  - host: nodered1-k3smaster.local
+    http:
+      paths:
+      - backend:
+          serviceName: nodered-1
+          servicePort: 80
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: nodered
+spec:
+  serviceName: nred
+  replicas: 2
   selector:
     matchLabels:
       app: nodered
@@ -17,39 +81,17 @@ spec:
     spec:
       containers:
       - name: nodered
-        image: nodered/node-red:1.0.2-10
-        imagePullPolicy: Always
+        image: nodered/node-red:1.0.2-10-minimal
         ports:
         - containerPort: 1880
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: nodered
-spec:
-  selector:
-    app: nodered
-  ports:
-  - protocol: TCP
-    name: web
-    port: 80
-    targetPort: 1880
----
-apiVersion: extensions/v1beta1
-kind: Ingress
-metadata:
-  name: nodered-ingress
-spec:
-  rules:
-  - host: nodered-k3smaster.local
-    http:
-      paths:
-      - backend:
-          serviceName: nodered
-          servicePort: 80
-  - host: nodered.k3smaster.local
-    http:
-      paths:
-      - backend:
-          serviceName: nodered
-          servicePort: 80
+        volumeMounts:
+        - name: nodered
+          mountPath: /data
+  volumeClaimTemplates:
+  - metadata:
+      name: nodered
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 100Mi
