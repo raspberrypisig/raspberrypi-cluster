@@ -6,7 +6,7 @@ spec:
   selector:
     matchLabels:
       app: microbot
-  replicas: 1 # tells deployment to run 2 pods matching the template
+  replicas: 4 # tells deployment to run 2 pods matching the template
   template:
     metadata:
       labels:
@@ -17,6 +17,8 @@ spec:
         image: mohankumargupta/microbot
         ports:
         - containerPort: 80
+      nodeSelector:
+        nodetype: thirstyslave
 ---
 apiVersion: v1
 kind: Service
