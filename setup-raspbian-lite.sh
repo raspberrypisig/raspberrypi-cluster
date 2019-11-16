@@ -29,9 +29,10 @@ systemctl restart avahi-daemon
 
 raspi-config nonint do_configure_keyboard $KEYBOARD
 raspi-config nonint do_change_locale $LOCALE
-raspi-config nonint do_change_timezone $TIMEZONE
-raspi-config nonint do_boot_behaviour B2
-
 export LANG=$LOCALE
 export LC_ALL=$LOCALE
 export LANGUAGE=$LOCALE
+raspi-config nonint do_change_timezone $TIMEZONE
+raspi-config nonint do_boot_behaviour B2
+
+
