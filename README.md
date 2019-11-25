@@ -39,6 +39,7 @@ Boot into Raspbian, then execute
 
 ```sh
 # Run as root
+apt update
 bash /boot/create-master.sh
 ```
 
@@ -47,6 +48,26 @@ bash /boot/create-master.sh
 Boot into Raspbian, then execute
 ```sh
 # Run as root
+apt update
 bash /boot/create-slave.sh
 ```
+
+# Confirmation of working cluster on Raspberry pi
+
+On master node, run:
+
+```sh
+kubectl get nodes
+```
+
+There is a pod on the cluster running nginx with a list of other pods/services running on the cluster. To get to it, you can use
+a device on the same wifi network and type the following in the browser depending on whether you are running Windows 10 or not.
+
+### Windows 10 Desktop/PC
+
+http://nginx-k3smaster.local
+
+### Linux/MacOS/Android/iOS
+
+http://nginx.k3smaster.local
 
