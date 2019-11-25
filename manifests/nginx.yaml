@@ -15,7 +15,7 @@ spec:
       initContainers:
       - name: busybox
         image: busybox
-        command: ['sh', '-c', 'wget --no-check-certificate -O /data/index.html https://raw.githubusercontent.com/raspberrypisig/raspberrypi-cluster/mas$
+        command: ['sh', '-c', 'wget --no-check-certificate -O /data/index.html https://raw.githubusercontent.com/raspberrypisig/raspberrypi-cluster/master/app/nginx/index.html && wget --no-check-certificate -O /data/index.json https://raw.githubusercontent.com/raspberrypisig/raspberrypi-cluster/master/app/nginx/index.json']
         volumeMounts:
         - name: workdir
           mountPath: /data
