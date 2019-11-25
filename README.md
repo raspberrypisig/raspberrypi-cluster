@@ -71,3 +71,5 @@ http://nginx-k3smaster.local
 
 http://nginx.k3smaster.local
 
+![Raspberry Pi Cluster Services](https://github.com/raspberrypisig/raspberrypi-cluster/raw/master/app/nginx/cluster-pi-services.jpg)
+
