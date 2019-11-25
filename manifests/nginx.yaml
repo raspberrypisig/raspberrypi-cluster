@@ -12,11 +12,24 @@ spec:
       labels:
         app: nginx
     spec:
+      initContainers:
+      - name: busybox
+        image: busybox
+        command: ['sh', '-c', 'wget --no-check-certificate -O /data/index.html https://raw.githubusercontent.com/raspberrypisig/raspberrypi-cluster/mas$
+        volumeMounts:
+        - name: workdir
+          mountPath: /data
       containers:
       - name: nginx
         image: nginx
         ports:
         - containerPort: 80
+        volumeMounts:
+        - name: workdir
+          mountPath: /usr/share/nginx/html
+      volumes:
+      - name: workdir
+        emptyDir: {}
 ---
 apiVersion: v1
 kind: Service
