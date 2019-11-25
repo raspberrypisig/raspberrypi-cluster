@@ -1,0 +1,51 @@
+[
+    {
+      "name": "Kubernetes Dashboard",
+      "description": "Official Kubernetes Dashboard",
+      "slug": "dashboard",
+      "workload": false,
+      "icon": "build"
+    },
+    {
+        "name": "Traefik Web UI",
+        "description": "Ingress Controller",
+        "slug": "traefik",
+        "workload": false,
+        "icon": "build"
+    },
+    {
+        "name": "VMWare Octant",
+        "description": "Another Kubernetes Dashboard",
+        "slug": "octant",
+        "workload": false,
+        "icon": "build"
+    },
+    {
+        "name": "Grafana",
+        "description": "Beautiful Dashboards",
+        "slug": "grafana",
+        "workload": true,
+        "icon": "poll"
+    },
+    {
+        "name": "Microbot",
+        "description": "nginx with container name",
+        "slug": "microbot",
+        "workload": true,
+        "icon": "polymer"
+    },
+    {
+        "name": "NodeRed #0",
+        "description": "nodered with persistent volume",
+        "slug": "nodered0",
+        "workload": true,
+        "icon": "public"
+    },
+    {
+        "name": "NodeRed #1",
+        "description": "nodered with persistent volume",
+        "slug": "nodered1",
+        "workload": true,
+        "icon": "public"
+    }
+]
