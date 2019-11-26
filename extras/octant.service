@@ -1,0 +1,13 @@
+[Unit]
+Description=octant
+After=network.target
+
+
+[Service]
+Type=simple
+Environment="HOME=/root"
+ExecStart=/usr/local/bin/octant --accepted-hosts 0.0.0.0 --disable-open-browser --listener-addr 0.0.0.0:7777 --kubeconfig /etc/rancher/k3s/k3s.yaml
+
+
+[Install]
+WantedBy=multi-user.target
