@@ -16,7 +16,7 @@
     {
         "name": "VMWare Octant",
         "description": "Another Kubernetes Dashboard",
-        "slug": "octant",
+        "slug": "http://k3smaster.local:7777",
         "workload": false,
         "icon": "build"
     },
