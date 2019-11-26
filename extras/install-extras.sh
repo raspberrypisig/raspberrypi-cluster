@@ -5,3 +5,4 @@ cd $DIR
 
 bash traefik-web-ui.sh
 bash kubectl.sh
+bash octant.sh
