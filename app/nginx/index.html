@@ -170,7 +170,12 @@
   //return os;
 },
       boo: function(servicename) {
-        window.open("http://" + servicename + this.getOS() + "k3smaster.local", "_blank")
+        if (servicename.search() === -1) {
+          window.open("http://" + servicename + this.getOS() + "k3smaster.local", "_blank")
+        }
+        else {
+          window.open(servicename, "_blank")
+        }
       }
     }
   })
