@@ -170,7 +170,7 @@
   //return os;
 },
       boo: function(servicename) {
-        if (servicename.search() === -1) {
+        if (servicename.search('http://') === -1) {
           window.open("http://" + servicename + this.getOS() + "k3smaster.local", "_blank")
         }
         else {
